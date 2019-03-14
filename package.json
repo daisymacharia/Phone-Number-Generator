@@ -5,7 +5,8 @@
   "main": "./dist/bundle.js",
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --watch --inline --hot --config ./webpack.config.js",
-    "test": "jest  --colors"
+    "test": "jest  --colors",
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [
     "node",
