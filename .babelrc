@@ -1,3 +1,20 @@
 {
-  "presets": ["@babel/preset-env"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [">0.25%"]
+        }
+      }
+    ],
+    "@babel/react"
+  ],
+
+  "plugins": [
+    "add-module-exports",
+    "babel-plugin-styled-components",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+  ]
 }

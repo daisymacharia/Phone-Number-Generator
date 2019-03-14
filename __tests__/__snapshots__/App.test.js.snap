@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Random Number Generator renders correctly 1`] = `
+<div
+  className="App__Page-sc-18h9djc-0 jwDQHH"
+>
+  <span
+    className="App__Span-sc-18h9djc-5 cspJHA"
+    size="40px"
+  >
+    Random Number Generator
+  </span>
+  <div
+    className="App__Container-sc-18h9djc-4 gRDfrI"
+  >
+    <div
+      className="App__StyledInputContainer-sc-18h9djc-1 ezwnbl"
+    >
+      <input
+        className="App__StyledInput-sc-18h9djc-2 hZCLZD"
+        onChange={[Function]}
+        placeholder="Number of phone numbers to be generated"
+      />
+    </div>
+    <button
+      className="App__StyledButton-sc-18h9djc-3 hqCJki"
+      onClick={[Function]}
+    >
+      Generate Numbers
+    </button>
+  </div>
+  <div
+    className="App__Container-sc-18h9djc-4 gRDfrI"
+  >
+    <button
+      className="App__StyledButton-sc-18h9djc-3 hqCJki"
+      onClick={[Function]}
+    >
+      Download unsorted Numbers
+    </button>
+    <button
+      className="App__StyledButton-sc-18h9djc-3 hqCJki"
+      onClick={[Function]}
+    >
+      Download sorted Numbers
+    </button>
+    <button
+      className="App__StyledButton-sc-18h9djc-3 hqCJki"
+      onClick={[Function]}
+    >
+      Sort in Ascending
+    </button>
+    <button
+      className="App__StyledButton-sc-18h9djc-3 hqCJki"
+      onClick={[Function]}
+    >
+      Sort in Descending
+    </button>
+  </div>
+  <span
+    className="App__Span-sc-18h9djc-5 heoFad"
+  >
+    Phone Numbers sorted
+  </span>
+  <span
+    className="App__Span-sc-18h9djc-5 heoFad"
+  >
+     Total Number of Generated Numbers: 
+    5
+  </span>
+  <span
+    className="App__Span-sc-18h9djc-5 heoFad"
+  >
+     The Max Number is: 
+  </span>
+  <span
+    className="App__Span-sc-18h9djc-5 heoFad"
+  >
+     The Min Number is: 
+  </span>
+</div>
+`;
