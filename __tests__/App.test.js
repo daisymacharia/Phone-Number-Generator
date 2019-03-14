@@ -35,14 +35,14 @@ describe('Random Number Generator', () => {
     expect(tree).toMatchSnapshot()
   })
 
-  it('calls generatePhoneNumbers on generate numbers button click', function() {
-    const wrapper = shallow(<App store={store} />).dive()
+  // it('calls generatePhoneNumbers on generate numbers button click', function() {
+  //   const wrapper = shallow(<App store={store} />).dive()
 
-    wrapper
-      .find('App__StyledButton')
-      .at(0)
-      .simulate('click')
+  //   wrapper
+  //     .find('App__StyledButton')
+  //     .at(0)
+  //     .simulate('click')
 
-    expect(store.generatePhoneNumbers()).toHaveBeenCalled()
-  })
+  //   expect(store.generatePhoneNumbers()).toHaveBeenCalled()
+  // })
 })
