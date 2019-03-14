@@ -18,7 +18,7 @@ exports[`Random Number Generator renders correctly 1`] = `
     >
       <input
         className="App__StyledInput-sc-18h9djc-2 hZCLZD"
-        onChange={[Function]}
+        onKeyUp={[Function]}
         placeholder="Number of phone numbers to be generated"
       />
     </div>
@@ -65,18 +65,18 @@ exports[`Random Number Generator renders correctly 1`] = `
   <span
     className="App__Span-sc-18h9djc-5 heoFad"
   >
-     Total Number of Generated Numbers: 
+    Total Number of Generated Numbers: 
     5
   </span>
   <span
     className="App__Span-sc-18h9djc-5 heoFad"
   >
-     The Max Number is: 
+    The Max Number is: 
   </span>
   <span
     className="App__Span-sc-18h9djc-5 heoFad"
   >
-     The Min Number is: 
+    The Min Number is: 
   </span>
 </div>
 `;

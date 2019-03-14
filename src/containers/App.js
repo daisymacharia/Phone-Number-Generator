@@ -56,16 +56,68 @@ const Span = styled.span`
   font-weight: ${props => props.weight || 200};
   margin-bottom: 10px;
 `
+const Alerts = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  top: 0;
+  right: 0;
+`
+
+const SingleAlert = styled.div`
+  display: flex;
+  min-width: 400px;
+  position: relative;
+  background: #f5f5f5;
+  box-shadow: 0 0 5px black;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  animation: fadeOut 4s linear forwards;
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+  }
+`
 
 @inject('store')
 @observer
 class App extends Component {
-  handleChange = e => {
-    this.props.store.limit = e.target.value
+  state = {
+    limit: 0,
+  }
+
+  generateNumbers = () => {
+    return (
+      (this.props.store.limit = this.state.limit),
+      this.props.store.generateRandomNumbers()
+    )
+  }
+
+  isNumber = evt => {
+    var charCode = evt.which ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return this.props.store.notNumber()
+
+    return this.setState({ limit: evt.target.value })
   }
 
   render() {
     const { store } = this.props
+
     return (
       <Page>
         <Span size='40px' weight={500}>
@@ -74,11 +126,11 @@ class App extends Component {
         <Container>
           <StyledInputContainer>
             <StyledInput
-              onChange={this.handleChange}
+              onKeyUp={this.isNumber}
               placeholder='Number of phone numbers to be generated'
             />
           </StyledInputContainer>
-          <StyledButton onClick={() => store.generateRandomNumbers()}>
+          <StyledButton onClick={this.generateNumbers}>
             Generate Numbers
           </StyledButton>
         </Container>
@@ -89,16 +141,14 @@ class App extends Component {
               <StyledButton
                 onClick={() =>
                   store.saveNumbers(store.phoneNumbers, 'unsorted.csv')
-                }
-              >
+                }>
                 Download unsorted Numbers
               </StyledButton>
 
               <StyledButton
                 onClick={() =>
                   store.saveNumbers(store.sortedNumbers, 'sorted.csv')
-                }
-              >
+                }>
                 Download sorted Numbers
               </StyledButton>
 
@@ -112,10 +162,19 @@ class App extends Component {
             {store.sortedNumbers.length > 0 && (
               <Span>Phone Numbers sorted</Span>
             )}
-            <Span> Total Number of Generated Numbers: {store.limit}</Span>
-            <Span> The Max Number is: {store.MaxNumber}</Span>
-            <Span> The Min Number is: {store.MinNumber}</Span>
+            <Span>Total Number of Generated Numbers: {store.limit}</Span>
+            <Span>The Max Number is: {store.MaxNumber}</Span>
+            <Span>The Min Number is: {store.MinNumber}</Span>
           </>
+        )}
+        {store.messages.length > 0 && (
+          <Alerts>
+            {store.messages.map((message, idx) => (
+              <SingleAlert key={idx + message}>
+                <p> {message} </p>
+              </SingleAlert>
+            ))}
+          </Alerts>
         )}
       </Page>
     )

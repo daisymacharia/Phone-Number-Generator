@@ -7,19 +7,25 @@ export default class Store {
   @observable limit = 0
   @observable MinNumber = 0
   @observable MaxNumber = 0
-  @observable message = ''
+  @observable messages = []
 
   @action
   generateRandomNumbers = () => {
     var numbers = new Array(this.limit)
     if (this.limit >= 10000) {
-      this.message = 'You can only generate upto 10000 numbers at a time'
+      this.messages = this.messages.concat(
+        'You can only generate upto 10000 numbers at a time'
+      )
     } else {
       for (var i = 0; i < this.limit; i++) {
         numbers[i] = this.addZero(Math.floor(Math.random() * 1000000000))
       }
 
       this.phoneNumbers = numbers
+      this.messages = this.messages.concat(
+        `You have generated ${this.limit} numbers`
+      )
+
       this.getMaxMinNumbers()
       return this.phoneNumbers
     }
@@ -37,6 +43,7 @@ export default class Store {
   @action
   saveNumbers(numbers, fileName) {
     saveAs(new Blob([numbers], { type: 'text/csv;charset=utf-8' }), fileName)
+    this.messages = this.messages.concat(`numbers saved to ${fileName}`)
   }
 
   getMaxMinNumbers() {
@@ -53,13 +60,22 @@ export default class Store {
 
     if (order === 'asc') {
       return (
-        this.sortedNumbers, (this.message = 'Numbers sorted in ascending order')
+        this.sortedNumbers,
+        (this.messages = this.messages.concat(
+          'Numbers sorted in ascending order'
+        ))
       )
     } else if (order === 'desc') {
       return (
         (this.sortedNumbers = this.sortedNumbers.slice().reverse()),
-        (this.message = 'Numbers sorted in descending order')
+        (this.messages = this.messages.concat(
+          'Numbers sorted in descending order'
+        ))
       )
     }
   }
+
+  @action
+  notNumber = () =>
+    (this.messages = this.messages.concat('You can only enter numbers'))
 }
